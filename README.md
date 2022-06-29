@@ -20,9 +20,6 @@ interchangeably.
 - **Object-Oriented Programming**: programming that is oriented around data
 (made mobile and changeable in **objects**) rather than functionality. Python
 is an object-oriented programming language.
-- **Procedural Programming**: programming that is oriented around procedures
-that are called in sequential order. Fortran and C are procedural programming
-languages.
 - **Function**: a series of steps that create, transform, and move data.
 - **Method**: a function that is defined inside of a class.
 - **Magic Method**: a special type of method in Python that starts and ends
@@ -52,7 +49,6 @@ Let's take a look at a class definition:
 ```py
 class Human:
     species = "Homo sapiens"
-
     def __init__(self, name):
         self.name = name
 ```
@@ -121,7 +117,6 @@ with dot notation:
 ```py
 class Human:
     species = "Homo sapiens"
-
     def __init__(self, name):
         self.name = name
 
@@ -188,6 +183,140 @@ setattr(guido, my_attr, True)
 getattr(guido, my_attr, False)
 # True
 ```
+
+<details><summary><em>Which <code>attr()</code> function checks for the
+presence of an attribute?</em></summary>
+<p>
+
+<h3><code>hasattr()</code></h3>
+<p><code>hasattr()</code> checks for the presence of an attribute and returns
+<code>True</code> or <code>False</code>.</p>
+</details>
+<br/>
+
+***
+
+## Properties
+
+Python's flexibility with respect to members of classes and objects is very
+useful to us, but sometimes we need to prepare for bad actors (like me, right
+now):
+
+```py
+# Setting Guido's age
+guido.age = False
+```
+
+It is always best practice to make our code as descriptive and easy to
+interpret as possible. Still, there are people who may not understand what we
+intended or who want to break our program. It's clear that we want Guido's age
+to be a numerical value between 0 and some reasonable upper limit (we'll say
+120). When we need to make sure an attribute meets a certain set of criteria,
+we need to configure it as a **property**.
+
+**Properties** in Python are attributes that are controlled by methods. The
+function of these methods is to make sure that the value of our property makes
+sense. We can configure **properties** using our knowledge of object-oriented
+programming and Python's built-in `property()` function. Open up the Python
+shell or a Python file to follow along:
+
+```py
+class Human:
+    species = "Homo sapiens"
+
+    def __init__(self, name, age=0):
+        self.name = name
+        self._age = age
+```
+
+Notice the _single underscore_ we place before the age attribute. This tells
+other Python programmers that this is meant to be treated as a _private_
+member of the class. It is not truly private, but it is a way to tell your
+coworkers that this is a **property** and there are methods that depend on its
+name and values.
+
+> NOTE: This is still not a true _private_ value; you can still manipulate it
+> with dot notation and `attr()` functions (though you shouldn't!)
+
+Let's continue configuring our `age` property:
+
+```py
+class Human:
+    species = "Homo sapiens"
+    def __init__(self, name, age=0):
+        self.name = name
+        self._age = age
+
+    def get_age(self):
+        print("Retrieving age.")
+        return self._age
+
+    def set_age(self, age):
+        print(f"Setting age to { age }")
+        self._age = age
+
+    age = property(get_age, set_age,)
+```
+
+Let's break this down a bit:
+
+- `__init__` forces us to set a `name` when we create a new instance of a
+human. It also lets us set age, but defaults to 0 if we do not provide one.
+- `get_age()` is compiled by the `property` function and prints
+`"Retrieving age"` when we access age through dot notation or an `attr()`
+function.
+- `set_age()` is compiled by the `property()` function and prints
+`"Setting age to { age }"` when we change our human's age.
+- The `property()` function compiles our getter and setter and calls them
+whenever anyone accesses our human's age.
+
+There's still a problem- we're not checking if the age is a number between 0
+and 120. Let's make one last change to finish our `Human` class:
+
+```py
+class Human:
+    species = "Homo sapiens"
+    def __init__(self, name, age=0):
+        self.name = name
+        self._age = age
+
+    def get_age(self):
+        print("Retrieving age.")
+        return self._age
+
+    def set_age(self, age):
+        if (type(age) in (int, float)) and (0 <= age <= 120):
+            print(f"Setting age to { age }.")
+            self._age = age
+
+        else:
+            print("Age must be a number between 0 and 120.")
+
+    age = property(get_age, set_age,)
+```
+
+Now we have a proper **property** set up. Let's make sure it works:
+
+```py
+guido = Human("Guido")
+guido.age
+# Retrieving age.
+# 0
+guido.age = False
+# Age must be a number between 0 and 120
+guido.age = 66
+# Setting age to 66.
+guido.age
+# Retrieving age.
+# 66
+```
+
+For more on properties, check out
+[the Python 3 documentation on the property() function][python docs property].
+
+[python docs property]: https://docs.python.org/3/library/functions.html#property
+
+***
 
 ## Instructions
 
