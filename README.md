@@ -224,9 +224,9 @@ shell or a Python file to follow along:
 class Human:
     species = "Homo sapiens"
 
-    def __init__(self, name, age=0):
+    def __init__(self, name):
         self.name = name
-        self._age = age
+        self._age = 0
 ```
 
 Notice the _single underscore_ we place before the age attribute. This tells
@@ -243,9 +243,9 @@ Let's continue configuring our `age` property:
 ```py
 class Human:
     species = "Homo sapiens"
-    def __init__(self, name, age=0):
+    def __init__(self, name):
         self.name = name
-        self._age = age
+        self._age = 0
 
     def get_age(self):
         print("Retrieving age.")
@@ -276,9 +276,9 @@ and 120. Let's make one last change to finish our `Human` class:
 ```py
 class Human:
     species = "Homo sapiens"
-    def __init__(self, name, age=0):
+    def __init__(self, name):
         self.name = name
-        self._age = age
+        self._age = 0
 
     def get_age(self):
         print("Retrieving age.")
@@ -337,15 +337,16 @@ need to complete the following tasks:
 ### `Dog` and `lib/dog.py`
 
 1. Define a `name` property for your `Dog` class. The name must be of type
-`str` and under 25 characters.
+`str` and between 1 and 25 characters.
     - If the name is invalid, the setter method
-should `print()` "Name must be string under 25 characters."
-2. Define a `breed` property for your `Dog` class. The breed must be in the
-following list of dog breeds:
+should `print()` "Name must be string between 1 and 25 characters."
+2. Define a `breed` property for your `Dog` class.
+    - If the breed is invalid, the setter method
+should `print()` "Breed must be in list of approved breeds." The breed must be
+in the following list of dog breeds:
 
 ![Dog Breeds](https://curriculum-content.s3.amazonaws.com/module-1/ruby-oo-fundamentals/object-attributes-lab/Image_142_CommonDogBreeds.png)
-    - If the breed is invalid, the setter method
-should `print()` "Breed must be in list of approved breeds."
+
 
 ### `Person` and `lib/person.py`
 
@@ -354,12 +355,12 @@ should `print()` "Breed must be in list of approved breeds."
 before it is saved.
     - If the name is invalid, the setter method should `print()`
 "Name must be string under 25 characters."
-2. Define a `job` property for your `Person` class. The job must be in the
-following list of jobs:
-
-![Job Types](https://businesstech.co.za/news/wp-content/uploads/2017/08/Women-jobs.jpg)
+2. Define a `job` property for your `Person` class.
     - If the job is invalid, the setter method
-should `print()` "Job must be in list of approved jobs."
+should `print()` "Job must be in list of approved jobs." The job must be in the
+following list of jobs:
+![Job Types](https://businesstech.co.za/news/wp-content/uploads/2017/08/Women-jobs.jpg)
+
 ***
 
 ## Conclusion
