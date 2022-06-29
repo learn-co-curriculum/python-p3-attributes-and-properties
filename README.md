@@ -325,8 +325,6 @@ guarantee this will happen, we should configure a property.</p>
 For more on properties, check out
 [the Python 3 documentation on the property() function][python docs property].
 
-[python docs property]: https://docs.python.org/3/library/functions.html#property
-
 ***
 
 ## Instructions
@@ -365,23 +363,19 @@ following list of jobs:
 
 ## Conclusion
 
-In Python, when we use `self` keyword in an **instance method**, `self` refers
-to whatever instance that method was called on. It's like a special variable
-that changes meaning depending on the context. Using `self` in conjunction with
-`__init__` allows us to create objects and set their most important attributes
-in one line of code. This also ensures that any objects of one class always
-contain the data that they need to be useful later on.
-
-This concept of our objects being self-aware is key to our ability to write
-object-oriented code. It may take some time to familiarize yourself with this
-concept, and that's ok! Just make sure to test out your code, and find ways to
-determine what `self` is (like using `ipdb.set_trace()`) if you're ever not
-sure.
+Python allows us to manipulate objects very easily with dot notation and its
+built-in `attr()` functions. This flexibility makes it very easy to accomplish
+any number of tasks, but there are times when we need to be more selective
+about the types of changes that are saved to our objects and classes. Python's
+`property()` function gives us the ability to validate attributes before they
+are saved to the classes and objects we've worked so hard to make.
 
 ***
 
 ## Resources
 
-- [__init__ in Python](https://www.geeksforgeeks.org/__init__-in-python/)
-- [Python self](https://www.w3schools.com/python/gloss_python_self.asp)
-- [What do __init__ and self do in Python?](https://stackoverflow.com/questions/625083/what-do-init-and-self-do-in-python)
+- [Class and Instance Attributes - Real Python](https://realpython.com/lessons/class-and-instance-attributes/)
+- [Property - Python Documentation][python docs property]
+- [Python property() function - GeeksforGeeks](https://www.geeksforgeeks.org/python-property-function/)
+
+[python docs property]: https://docs.python.org/3/library/functions.html#property
