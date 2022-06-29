@@ -311,6 +311,17 @@ guido.age
 # 66
 ```
 
+<details><summary><em>When should you configure a property instead of using a
+standard attribute?</em></summary>
+<p>
+
+<h3>When you need to validate input.</h3>
+<p>By default, Python allows us to change any attribute to any value. If we
+need an attribute to be within a certain range of values and we cannot
+guarantee this will happen, we should configure a property.</p>
+</details>
+<br/>
+
 For more on properties, check out
 [the Python 3 documentation on the property() function][python docs property].
 
@@ -320,24 +331,35 @@ For more on properties, check out
 
 ## Instructions
 
-Fork and clone the lab and run the tests with `pytest -x`.
+Fork and clone the lab and run `pytest -x`. To get the tests passing, you will
+need to complete the following tasks:
 
-### 1. `Person.__init__` with a Name
+### `Dog` and `lib/dog.py`
 
-Define a `Person` class in `lib/person.py`. In the class, define an
-`__init__` method that accepts an argument for the person's name. That
-argument should be stored within a `self.name` attribute.
+1. Define a `name` property for your `Dog` class. The name must be of type
+`str` and under 25 characters.
+    - If the name is invalid, the setter method
+should `print()` "Name must be string under 25 characters."
+2. Define a `breed` property for your `Dog` class. The breed must be in the
+following list of dog breeds:
 
-### 2. `Dog.__init__` with Name and Breed defaulting to "Mutt"
+![Dog Breeds](https://curriculum-content.s3.amazonaws.com/module-1/ruby-oo-fundamentals/object-attributes-lab/Image_142_CommonDogBreeds.png)
+    - If the breed is invalid, the setter method
+should `print()` "Breed must be in list of approved breeds."
 
-Define a `Dog` class in `lib/dog.py`. In the class, define an `__init__`
-method that accepts an argument for the dog's name. That argument should be
-stored within a `self.name` attribute.
+### `Person` and `lib/person.py`
 
-Additionally, `Dog.__init__` should accept a second _optional_ argument for
-the dog's breed stored in an attribute `self.breed`. When no breed is provided,
-it should default to "Mutt".
+1. Define a `name` property for your `Person` class. The name must be of type
+`str` and under 25 characters. The name should be converted to [title case](https://www.w3schools.com/python/ref_string_title.asp#:~:text=The%20title()%20method%20returns,be%20converted%20to%20upper%20case.)
+before it is saved.
+    - If the name is invalid, the setter method should `print()`
+"Name must be string under 25 characters."
+2. Define a `job` property for your `Person` class. The job must be in the
+following list of jobs:
 
+![Job Types](https://businesstech.co.za/news/wp-content/uploads/2017/08/Women-jobs.jpg)
+    - If the job is invalid, the setter method
+should `print()` "Job must be in list of approved jobs."
 ***
 
 ## Conclusion
