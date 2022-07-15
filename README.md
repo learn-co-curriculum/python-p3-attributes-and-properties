@@ -349,7 +349,7 @@ in the following list of dog breeds:
 ### `Person` and `lib/person.py`
 
 1. Define a `name` property for your `Person` class. The name must be of type
-`str` and under 25 characters. The name should be converted to [title case](https://www.w3schools.com/python/ref_string_title.asp#:~:text=The%20title()%20method%20returns,be%20converted%20to%20upper%20case.)
+`str` and less than 25 characters. The name should be converted to [title case](https://www.w3schools.com/python/ref_string_title.asp#:~:text=The%20title()%20method%20returns,be%20converted%20to%20upper%20case.)
 before it is saved.
     - If the name is invalid, the setter method should `print()`
 "Name must be string under 25 characters."
