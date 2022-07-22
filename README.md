@@ -343,6 +343,10 @@ should `print()` "Name must be string between 1 and 25 characters."
 should `print()` "Breed must be in list of approved breeds." The breed must be
 in the following list of dog breeds:
 
+```py
+approved_breeds = ["Mastiff", "Chihuahua", "Corgi", "Shar Pei", "Beagle", "French Bulldog", "Pug", "Pointer"]
+```
+
 ![Dog Breeds](https://curriculum-content.s3.amazonaws.com/module-1/ruby-oo-fundamentals/object-attributes-lab/Image_142_CommonDogBreeds.png)
 
 
@@ -357,6 +361,11 @@ before it is saved.
     - If the job is invalid, the setter method
 should `print()` "Job must be in list of approved jobs." The job must be in the
 following list of jobs:
+
+```py
+approved_jobs = ["Admin", "Customer Service", "Human Resources", "ITC", "Production", "Legal", "Finance", "Sales", "General Management", "Research & Development", "Marketing", "Purchasing"]
+```
+
 ![Job Types](https://businesstech.co.za/news/wp-content/uploads/2017/08/Women-jobs.jpg)
 
 ***
