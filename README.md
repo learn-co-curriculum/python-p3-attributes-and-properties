@@ -276,9 +276,9 @@ and 120. Let's make one last change to finish our `Human` class:
 ```py
 class Human:
     species = "Homo sapiens"
-    def __init__(self, name):
+    def __init__(self, name, age=0):
         self.name = name
-        self._age = 0
+        self._age = age
 
     def get_age(self):
         print("Retrieving age.")
