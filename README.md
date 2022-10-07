@@ -368,6 +368,9 @@ approved_jobs = ["Admin", "Customer Service", "Human Resources", "ITC", "Product
 
 ![Job Types](https://businesstech.co.za/news/wp-content/uploads/2017/08/Women-jobs.jpg)
 
+> **NOTE: Because we are assigning properties after instantiation of our
+> Dog and Person objects, you should _not_ set them in `__init__()`.**
+
 ***
 
 ## Conclusion
