@@ -349,7 +349,6 @@ approved_breeds = ["Mastiff", "Chihuahua", "Corgi", "Shar Pei", "Beagle", "Frenc
 
 ![Dog Breeds](https://curriculum-content.s3.amazonaws.com/module-1/ruby-oo-fundamentals/object-attributes-lab/Image_142_CommonDogBreeds.png)
 
-
 ### `Person` and `lib/person.py`
 
 1. Define a `name` property for your `Person` class. The name must be of type
