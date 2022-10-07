@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from lib.person import Person
+from person import Person
 
 import io
 import sys
@@ -14,7 +14,7 @@ class TestPerson:
         assert(type(guido) == Person)
         
     def test_name_not_empty(self):
-        '''prints "Name must be string under 25 characters." if empty string.'''
+        '''prints "Name must be string between 1 and 25 characters." if empty string.'''
         captured_out = io.StringIO()
         sys.stdout = captured_out
         guido = Person()
@@ -23,7 +23,7 @@ class TestPerson:
         assert(captured_out.getvalue() == "Name must be string between 1 and 25 characters.\n")
 
     def test_name_string(self):
-        '''prints "Name must be string under 25 characters." if not string.'''
+        '''prints "Name must be string between 1 and 25 characters." if not string.'''
         captured_out = io.StringIO()
         sys.stdout = captured_out
         guido = Person()

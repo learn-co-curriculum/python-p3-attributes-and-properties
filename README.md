@@ -349,11 +349,11 @@ approved_breeds = ["Mastiff", "Chihuahua", "Corgi", "Shar Pei", "Beagle", "Frenc
 
 ![Dog Breeds](https://curriculum-content.s3.amazonaws.com/module-1/ruby-oo-fundamentals/object-attributes-lab/Image_142_CommonDogBreeds.png)
 
-
 ### `Person` and `lib/person.py`
 
 1. Define a `name` property for your `Person` class. The name must be of type
-`str` and between 1 and 25 characters. The name should be converted to [title case](https://www.w3schools.com/python/ref_string_title.asp#:~:text=The%20title()%20method%20returns,be%20converted%20to%20upper%20case.)
+`str` and between 1 and 25 characters. The name should be converted to [title
+case](https://www.w3schools.com/python/ref_string_title.asp#:~:text=The%20title()%20method%20returns,be%20converted%20to%20upper%20case.)
 before it is saved.
     - If the name is invalid, the setter method should `print()`
 "Name must be string between 1 and 25 characters."
