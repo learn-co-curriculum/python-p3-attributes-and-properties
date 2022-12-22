@@ -69,9 +69,9 @@ accessed on the class itself, in addition to any instances:
 ```py
 guido = Human("Guido")
 guido.species
-# Homo sapiens
+# => Homo sapiens
 Human.species
-# Homo sapiens
+# => Homo sapiens
 ```
 
 Since `name` is an instance attribute, calling it on the `Human` class will
@@ -80,9 +80,9 @@ result in an error:
 ```py
 guido = Human("Guido")
 guido.name
-# Guido
+# => Guido
 Human.name
-# AttributeError: type object 'Human' has no attribute 'name'
+# => AttributeError: type object 'Human' has no attribute 'name'
 ```
 
 <details><summary><em>If we enter <code>guido.nationality = "Dutch"</code>
@@ -122,23 +122,23 @@ class Human:
 
 guido = Human("Guido")
 guido.species
-# Homo sapiens
+# => Homo sapiens
 guido.name
-# Guido
+# => Guido
 
 # Changing species and name using dot notation
 guido.species = "Python programmer"
 guido.name = "Guido van Rossum"
 
 guido.species
-# Python programmer
+# => Python programmer
 guido.name
-# Guido van Rossum
+# => Guido van Rossum
 
 # Adding new attributes using dot notation
 guido.nationality = "Dutch"
 guido.nationality
-# Dutch
+# => Dutch
 ```
 
 **Because it is so simple to modify the attributes of classes and objects in
@@ -158,9 +158,9 @@ when dot notation can be used to accomplish the same tasks:
 ```py
 # Getting
 guido.name
-# Guido van Rossum
+# => Guido van Rossum
 getattr(guido, "name")
-# Guido van Rossum
+# => Guido van Rossum
 
 #Setting
 guido.nationality = "Dutch"
@@ -176,12 +176,12 @@ retrieve, update, and delete attributes for which the names are unknown.
 ```py
 my_attr = "is_a_friend"
 getattr(guido, my_attr, False)
-# False
+# => False
 
 # Oh no! Let's try again.
 setattr(guido, my_attr, True)
 getattr(guido, my_attr, False)
-# True
+# => True
 ```
 
 <details><summary><em>Which <code>attr()</code> function checks for the
@@ -205,6 +205,7 @@ now):
 ```py
 # Setting Guido's age
 guido.age = False
+
 ```
 
 It is always best practice to make our code as descriptive and easy to
@@ -224,10 +225,27 @@ shell or a Python file to follow along:
 class Human:
     species = "Homo sapiens"
 
-    def __init__(self, name):
-        self.name = name
-        self._age = 0
+    def get_age(self):
+        print("Retrieving age.")
+        return self._age
+
+    def set_age(self, age):
+        print(f"Setting age to { age }")
+        self._age = age
+
+    age = property(get_age, set_age,)
+
 ```
+
+Let's break this down a bit:
+
+- `get_age()` is compiled by the `property` function and prints
+`"Retrieving age"` when we access age through dot notation or an `attr()`
+function.
+- `set_age()` is compiled by the `property()` function and prints
+`"Setting age to { age }"` when we change our human's age.
+- The `property()` function compiles our getter and setter and calls them
+whenever anyone accesses our human's age.
 
 Notice the _single underscore_ we place before the age attribute. This tells
 other Python programmers that this is meant to be treated as a _private_
@@ -238,47 +256,12 @@ name and values.
 > NOTE: This is still not a true _private_ value; you can still manipulate it
 > with dot notation and `attr()` functions (though you shouldn't!)
 
-Let's continue configuring our `age` property:
-
-```py
-class Human:
-    species = "Homo sapiens"
-    def __init__(self, name, age=0):
-        self.name = name
-        self._age = age
-
-    def get_age(self):
-        print("Retrieving age.")
-        return self._age
-
-    def set_age(self, age):
-        print(f"Setting age to { age }")
-        self._age = age
-
-    age = property(get_age, set_age,)
-```
-
-Let's break this down a bit:
-
-- `__init__` forces us to set a `name` when we create a new instance of a
-human. It also lets us set age, but defaults to 0 if we do not provide one.
-- `get_age()` is compiled by the `property` function and prints
-`"Retrieving age"` when we access age through dot notation or an `attr()`
-function.
-- `set_age()` is compiled by the `property()` function and prints
-`"Setting age to { age }"` when we change our human's age.
-- The `property()` function compiles our getter and setter and calls them
-whenever anyone accesses our human's age.
-
 There's still a problem- we're not checking if the age is a number between 0
 and 120. Let's make one last change to finish our `Human` class:
 
 ```py
 class Human:
     species = "Homo sapiens"
-    def __init__(self, name, age=0):
-        self.name = name
-        self._age = age
 
     def get_age(self):
         print("Retrieving age.")
@@ -300,15 +283,15 @@ Now we have a proper **property** set up. Let's make sure it works:
 ```py
 guido = Human("Guido")
 guido.age
-# Retrieving age.
-# 0
+# => Retrieving age.
+# => 0
 guido.age = False
-# Age must be a number between 0 and 120
+# => Age must be a number between 0 and 120
 guido.age = 66
-# Setting age to 66.
+# => Setting age to 66.
 guido.age
-# Retrieving age.
-# 66
+# => Retrieving age.
+# => 66
 ```
 
 <details><summary><em>When should you configure a property instead of using a
