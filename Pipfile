@@ -4,6 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+importlib-resources = "5.10.0"
 ipdb = "0.13.9"
 pytest = "7.1.2"
 
