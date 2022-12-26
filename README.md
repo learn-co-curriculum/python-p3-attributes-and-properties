@@ -78,7 +78,7 @@ Since `name` is an instance attribute, calling it on the `Human` class will
 result in an error:
 
 ```py
-guido = Human("Guido")
+guido = Human()
 guido.name
 # => Guido
 Human.name
