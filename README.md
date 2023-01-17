@@ -281,10 +281,9 @@ class Human:
 Now we have a proper **property** set up. Let's make sure it works:
 
 ```py
-guido = Human("Guido")
-guido.age
-# => Retrieving age.
-# => 0
+guido = Human()
+guido.age = 0
+# => Setting age to 0.
 guido.age = False
 # => Age must be a number between 0 and 120
 guido.age = 66
