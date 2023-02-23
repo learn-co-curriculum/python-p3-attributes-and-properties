@@ -348,10 +348,9 @@ following list of jobs:
 approved_jobs = ["Admin", "Customer Service", "Human Resources", "ITC", "Production", "Legal", "Finance", "Sales", "General Management", "Research & Development", "Marketing", "Purchasing"]
 ```
 
-![Job Types](https://businesstech.co.za/news/wp-content/uploads/2017/08/Women-jobs.jpg)
-
-> **NOTE: Because we are assigning properties after instantiation of our
-> Dog and Person objects, you should _not_ set them in `__init__()`.**
+> **NOTE: Because we want to instantiate our Dogs and People with their
+> properties, remember to include set values in `__init__()` using the
+> _property_ name and not the protected _attribute_ name.**
 
 ***
 
