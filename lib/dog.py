@@ -30,9 +30,9 @@ class Dog:
     def get_breed(self):
         return self._breed
     
-    def set_breed(self, job):
-        if job in APPROVED_BREEDS:
-            self._breed = job
+    def set_breed(self, breed):
+        if breed in APPROVED_BREEDS:
+            self._breed = breed
         else:
             print("Breed must be in list of approved breeds.")
 
