@@ -287,7 +287,8 @@ class Human:
 Now we have a proper **property** set up. Let's make sure it works:
 
 ```py
-guido = Human()
+guido = Human(age=67)
+# => Setting age to 67.
 guido.age = 0
 # => Setting age to 0.
 guido.age = False
