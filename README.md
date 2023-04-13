@@ -225,6 +225,9 @@ shell or a Python file to follow along:
 class Human:
     species = "Homo sapiens"
 
+    def __init__(self, age):
+        self.age = age
+
     def get_age(self):
         print("Retrieving age.")
         return self._age
@@ -233,19 +236,19 @@ class Human:
         print(f"Setting age to { age }")
         self._age = age
 
-    age = property(get_age, set_age,)
+    age = property(get_age, set_age)
 
 ```
 
 Let's break this down a bit:
 
 - `get_age()` is compiled by the `property` function and prints
-`"Retrieving age"` when we access age through dot notation or an `attr()`
-function.
+  `"Retrieving age"` when we access age through dot notation or an `attr()`
+  function.
 - `set_age()` is compiled by the `property()` function and prints
-`"Setting age to { age }"` when we change our human's age.
+  `"Setting age to { age }"` when we change our human's age.
 - The `property()` function compiles our getter and setter and calls them
-whenever anyone accesses our human's age.
+  whenever anyone accesses our human's age.
 
 Notice the _single underscore_ we place before the age attribute. This tells
 other Python programmers that this is meant to be treated as a _private_
@@ -263,6 +266,9 @@ and 120. Let's make one last change to finish our `Human` class:
 class Human:
     species = "Homo sapiens"
 
+    def __init__(self, age):
+        self.age = age
+
     def get_age(self):
         print("Retrieving age.")
         return self._age
@@ -275,13 +281,14 @@ class Human:
         else:
             print("Age must be a number between 0 and 120.")
 
-    age = property(get_age, set_age,)
+    age = property(get_age, set_age)
 ```
 
 Now we have a proper **property** set up. Let's make sure it works:
 
 ```py
-guido = Human()
+guido = Human(age=67)
+# => Setting age to 67.
 guido.age = 0
 # => Setting age to 0.
 guido.age = False
