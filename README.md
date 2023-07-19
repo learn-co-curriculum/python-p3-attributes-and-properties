@@ -321,11 +321,11 @@ need to complete the following tasks:
 ### `Dog` and `lib/dog.py`
 
 1. Define a `name` property for your `Dog` class. The name must be of type `str`
-and between 1 and 25 characters. Your `__init__` method receive a default
+and between 1 and 25 characters. Your `__init__` method should receive a default
 argument for `name`.
     - If the name is invalid, the setter method should `print()` "Name must be
 string between 1 and 25 characters."
-2. Define a `breed` property for your `Dog` class. Your `__init__` method
+2. Define a `breed` property for your `Dog` class. Your `__init__` method should
    receive a default argument for `breed`.
     - If the breed is invalid, the setter method should `print()` "Breed must be
 in list of approved breeds." The breed must be in the following list of dog
@@ -343,11 +343,11 @@ Breeds](https://curriculum-content.s3.amazonaws.com/module-1/ruby-oo-fundamental
 1. Define a `name` property for your `Person` class. The name must be of type
 `str` and between 1 and 25 characters. The name should be converted to [title
 case](https://www.w3schools.com/python/ref_string_title.asp#:~:text=The%20title()%20method%20returns,be%20converted%20to%20upper%20case.)
-before it is saved. Your `__init__` method receive a default argument for
+before it is saved. Your `__init__` method should receive a default argument for
 `name`.
     - If the name is invalid, the setter method should `print()` "Name must be
 string between 1 and 25 characters."
-2. Define a `job` property for your `Person` class. Your `__init__` method
+2. Define a `job` property for your `Person` class. Your `__init__` method should
    receive a default argument for `job`.
     - If the job is invalid, the setter method should `print()` "Job must be in
 list of approved jobs." The job must be in the following list of jobs:
