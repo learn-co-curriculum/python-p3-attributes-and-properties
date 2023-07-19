@@ -11,21 +11,20 @@
 
 - **Class**: a bundle of data and functionality. Can be copied and modified to
 accomplish a wide variety of programming tasks.
-- **Initialize**: create a working copy of a class using its `__init__`
-method.
+- **Initialize**: create a working copy of a class using its `__init__` method.
 - **Instance**: one specific working copy of a class. It is created when a
 class's `__init__` method is called.
 - **Object**: the more common name for an instance. The two can usually be used
 interchangeably.
 - **Object-Oriented Programming**: programming that is oriented around data
-(made mobile and changeable in **objects**) rather than functionality. Python
-is an object-oriented programming language.
+(made mobile and changeable in **objects**) rather than functionality. Python is
+an object-oriented programming language.
 - **Function**: a series of steps that create, transform, and move data.
 - **Method**: a function that is defined inside of a class.
-- **Magic Method**: a special type of method in Python that starts and ends
-with double underscores. These methods are called on objects under certain
-conditions without needing to use their names explicitly. Also called **dunder
-methods** (for **d**ouble **under**score).
+- **Magic Method**: a special type of method in Python that starts and ends with
+double underscores. These methods are called on objects under certain conditions
+without needing to use their names explicitly. Also called **dunder methods**
+(for **d**ouble **under**score).
 - **Attribute**: variables that belong to an object.
 - **Property**: attributes that are controlled by methods.
 
@@ -53,18 +52,17 @@ class Human:
         self.name = name
 ```
 
-This class, `Human`, takes a `name` as an argument for its initialization
-method and saves it as an attribute of `self`. This attribute varies from one
-instance of the `Human` class to the next, so we call this an _instance
-attribute_.
+This class, `Human`, takes a `name` as an argument for its initialization method
+and saves it as an attribute of `self`. This attribute varies from one instance
+of the `Human` class to the next, so we call this an _instance attribute_.
 
 Since `species` is set outside the scope of any methods, it is a _class
 attribute_. All members of the `Human` class have the same `species`, so this
 makes more sense than setting the same value for every new human upon
 instantation.
 
-An interesting note about class attributes is that they can be
-accessed on the class itself, in addition to any instances:
+An interesting note about class attributes is that they can be accessed on the
+class itself, in addition to any instances:
 
 ```py
 guido = Human("Guido")
@@ -100,8 +98,8 @@ attribute?</em></summary>
 
 ## Setting and Getting Attributes
 
-Many programming languages opt to protect their objects' attributes and
-methods (members). They accomplish this by making the distinction between _public_,
+Many programming languages opt to protect their objects' attributes and methods
+(members). They accomplish this by making the distinction between _public_,
 _private_, and _protected_. These terms are good to know, as you will almost
 certainly encounter them in your software career:
 
@@ -208,12 +206,12 @@ guido.age = False
 
 ```
 
-It is always best practice to make our code as descriptive and easy to
-interpret as possible. Still, there are people who may not understand what we
-intended or who want to break our program. It's clear that we want Guido's age
-to be a numerical value between 0 and some reasonable upper limit (we'll say
-120). When we need to make sure an attribute meets a certain set of criteria,
-we need to configure it as a **property**.
+It is always best practice to make our code as descriptive and easy to interpret
+as possible. Still, there are people who may not understand what we intended or
+who want to break our program. It's clear that we want Guido's age to be a
+numerical value between 0 and some reasonable upper limit (we'll say 120). When
+we need to make sure an attribute meets a certain set of criteria, we need to
+configure it as a **property**.
 
 **Properties** in Python are attributes that are controlled by methods. The
 function of these methods is to make sure that the value of our property makes
@@ -242,25 +240,24 @@ class Human:
 
 Let's break this down a bit:
 
-- `get_age()` is compiled by the `property` function and prints
-  `"Retrieving age"` when we access age through dot notation or an `attr()`
-  function.
-- `set_age()` is compiled by the `property()` function and prints
-  `"Setting age to { age }"` when we change our human's age.
+- `get_age()` is compiled by the `property` function and prints `"Retrieving
+  age"` when we access age through dot notation or an `attr()` function.
+- `set_age()` is compiled by the `property()` function and prints `"Setting age
+  to { age }"` when we change our human's age.
 - The `property()` function compiles our getter and setter and calls them
   whenever anyone accesses our human's age.
 
 Notice the _single underscore_ we place before the age attribute. This tells
-other Python programmers that this is meant to be treated as a _private_
-member of the class. It is not truly private, but it is a way to tell your
-coworkers that this is a **property** and there are methods that depend on its
-name and values.
+other Python programmers that this is meant to be treated as a _private_ member
+of the class. It is not truly private, but it is a way to tell your coworkers
+that this is a **property** and there are methods that depend on its name and
+values.
 
 > NOTE: This is still not a true _private_ value; you can still manipulate it
 > with dot notation and `attr()` functions (though you shouldn't!)
 
-There's still a problem- we're not checking if the age is a number between 0
-and 120. Let's make one last change to finish our `Human` class:
+There's still a problem- we're not checking if the age is a number between 0 and
+120. Let's make one last change to finish our `Human` class:
 
 ```py
 class Human:
@@ -311,8 +308,8 @@ guarantee this will happen, we should configure a property.</p>
 </details>
 <br/>
 
-For more on properties, check out
-[the Python 3 documentation on the property() function][python docs property].
+For more on properties, check out [the Python 3 documentation on the property()
+function][python docs property].
 
 ***
 
@@ -323,33 +320,37 @@ need to complete the following tasks:
 
 ### `Dog` and `lib/dog.py`
 
-1. Define a `name` property for your `Dog` class. The name must be of type
-`str` and between 1 and 25 characters.
-    - If the name is invalid, the setter method
-should `print()` "Name must be string between 1 and 25 characters."
-2. Define a `breed` property for your `Dog` class.
-    - If the breed is invalid, the setter method
-should `print()` "Breed must be in list of approved breeds." The breed must be
-in the following list of dog breeds:
+1. Define a `name` property for your `Dog` class. The name must be of type `str`
+and between 1 and 25 characters. Your `__init__` method receive a default
+argument for `name`.
+    - If the name is invalid, the setter method should `print()` "Name must be
+string between 1 and 25 characters."
+2. Define a `breed` property for your `Dog` class. Your `__init__` method
+   receive a default argument for `breed`.
+    - If the breed is invalid, the setter method should `print()` "Breed must be
+in list of approved breeds." The breed must be in the following list of dog
+breeds:
 
 ```py
 approved_breeds = ["Mastiff", "Chihuahua", "Corgi", "Shar Pei", "Beagle", "French Bulldog", "Pug", "Pointer"]
 ```
 
-![Dog Breeds](https://curriculum-content.s3.amazonaws.com/module-1/ruby-oo-fundamentals/object-attributes-lab/Image_142_CommonDogBreeds.png)
+![Dog
+Breeds](https://curriculum-content.s3.amazonaws.com/module-1/ruby-oo-fundamentals/object-attributes-lab/Image_142_CommonDogBreeds.png)
 
 ### `Person` and `lib/person.py`
 
 1. Define a `name` property for your `Person` class. The name must be of type
 `str` and between 1 and 25 characters. The name should be converted to [title
 case](https://www.w3schools.com/python/ref_string_title.asp#:~:text=The%20title()%20method%20returns,be%20converted%20to%20upper%20case.)
-before it is saved.
-    - If the name is invalid, the setter method should `print()`
-"Name must be string between 1 and 25 characters."
-2. Define a `job` property for your `Person` class.
-    - If the job is invalid, the setter method
-should `print()` "Job must be in list of approved jobs." The job must be in the
-following list of jobs:
+before it is saved. Your `__init__` method receive a default argument for
+`name`.
+    - If the name is invalid, the setter method should `print()` "Name must be
+string between 1 and 25 characters."
+2. Define a `job` property for your `Person` class. Your `__init__` method
+   receive a default argument for `job`.
+    - If the job is invalid, the setter method should `print()` "Job must be in
+list of approved jobs." The job must be in the following list of jobs:
 
 ```py
 approved_jobs = ["Admin", "Customer Service", "Human Resources", "ITC", "Production", "Legal", "Finance", "Sales", "General Management", "Research & Development", "Marketing", "Purchasing"]
@@ -365,8 +366,8 @@ approved_jobs = ["Admin", "Customer Service", "Human Resources", "ITC", "Product
 
 Python allows us to manipulate objects very easily with dot notation and its
 built-in `attr()` functions. This flexibility makes it very easy to accomplish
-any number of tasks, but there are times when we need to be more selective
-about the types of changes that are saved to our objects and classes. Python's
+any number of tasks, but there are times when we need to be more selective about
+the types of changes that are saved to our objects and classes. Python's
 `property()` function gives us the ability to validate attributes before they
 are saved to the classes and objects we've worked so hard to make.
 
@@ -374,8 +375,11 @@ are saved to the classes and objects we've worked so hard to make.
 
 ## Resources
 
-- [Class and Instance Attributes - Real Python](https://realpython.com/lessons/class-and-instance-attributes/)
+- [Class and Instance Attributes - Real
+  Python](https://realpython.com/lessons/class-and-instance-attributes/)
 - [Property - Python Documentation][python docs property]
-- [Python property() function - GeeksforGeeks](https://www.geeksforgeeks.org/python-property-function/)
+- [Python property() function -
+  GeeksforGeeks](https://www.geeksforgeeks.org/python-property-function/)
 
-[python docs property]: https://docs.python.org/3/library/functions.html#property
+[python docs property]:
+    https://docs.python.org/3/library/functions.html#property
